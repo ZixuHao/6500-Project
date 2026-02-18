@@ -49,3 +49,17 @@ CUB_200_2011/
 ├── classes.txt
 └── bounding_boxes.txt
 ```
+
+## Task Definition
+We study a fine-grained image classification problem using the CUB-200-2011 dataset.
+Given an RGB image of a bird, the goal is to predict its species label among 200 classes.
+
+## Success Criteria
+We evaluate performance using top-1 classification accuracy on the held-out test set.
+
+## Scope
+This project focuses on supervised classification using pretrained CNN backbones.
+We do not address detection or segmentation in this semester.
+
+## Modality
+Vision (RGB images)
