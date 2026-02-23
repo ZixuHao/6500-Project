@@ -51,15 +51,51 @@ CUB_200_2011/
 ```
 
 ## Task Definition
-We study a fine-grained image classification problem using the CUB-200-2011 dataset.
-Given an RGB image of a bird, the goal is to predict its species label among 200 classes.
+This project studies fine-grained visual recognition using CUB-200-2011.
+
+We explore multiple computer vision formulations:
+
+1. Image Classification
+Predict bird species (200-way classification).
+
+2. Object Localization (Bounding Box Prediction)
+Use provided bounding boxes to study localization performance and IoU-based evaluation.
+
+3. Classification with Localization Supervision
+Compare full-image training vs cropped-to-bounding-box training.
 
 ## Success Criteria
-We evaluate performance using top-1 classification accuracy on the held-out test set.
+
+### Classification
+
+- Top-1 Accuracy
+
+- Top-5 Accuracy
+
+- Per-class accuracy
+
+- Confusion matrix
+
+### Localization
+
+- IoU (Intersection over Union)
+
+- Localization accuracy (IoU > 0.5)
 
 ## Scope
-This project focuses on supervised classification using pretrained CNN backbones.
-We do not address detection or segmentation in this semester.
+This project covers the following course concepts:
+
+- CNN fundamentals (convolution, receptive field, pooling)
+
+- Modern architectures (ResNet, DenseNet)
+
+- Transfer learning (frozen vs fine-tuned backbones)
+
+- Bounding box evaluation (IoU)
+
+- Fine-grained classification challenges
+
+- Error analysis and class confusion patterns
 
 ## Modality
 Vision (RGB images)
