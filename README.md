@@ -99,3 +99,57 @@ This project covers the following course concepts:
 
 ## Modality
 Vision (RGB images)
+
+## Baseline
+
+### ResNet-18 (ImageNet pretrained)
+
+Backbone: torchvision resnet18
+
+Pretrained on ImageNet
+
+Final FC layer replaced with 200-way classifier
+
+End-to-end fine-tuning
+
+### Training Setup
+
+Input resolution: 224 × 224
+
+Data augmentation:
+
+RandomResizedCrop (scale 0.7–1.0)
+
+RandomHorizontalFlip
+
+Normalization: ImageNet mean/std
+
+Batch size: (your cfg.batch_size, e.g. 64)
+
+Optimizer: (e.g. SGD or Adam — fill according to your config)
+
+Epochs: 10
+
+Bounding box crop: Disabled
+
+Training time (Colab GPU): ~2.8 minutes
+
+### Evaluation Metrics
+
+Top-1 Accuracy
+
+Top-5 Accuracy
+
+### Results
+epoch 10
+train top-1 81.95%
+test top-1 58.18%
+test top-5 85.50%
+
+Best Top-1 Accuracy: 58.18%
+
+### Reproduce Baseline
+
+```{bash}
+python -m src.main
+```
