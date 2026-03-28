@@ -170,7 +170,7 @@ End-to-end fine-tuning
 
 ---
 
-### 🔍 Comparison Summary
+### Comparison Summary
 
 | Method | Top-1 | Top-5 |
 |--------|------|------|
