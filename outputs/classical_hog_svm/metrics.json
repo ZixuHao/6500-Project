@@ -1,0 +1,15 @@
+{
+  "method": "HOG + LinearSVM",
+  "top1_accuracy": 2.1056,
+  "top5_accuracy": 8.2327,
+  "train_size": 5994,
+  "test_size": 5794,
+  "image_size": 128,
+  "orientations": 9,
+  "pixels_per_cell": 16,
+  "cells_per_block": 2,
+  "C": 1.0,
+  "max_iter": 5000,
+  "use_bbox_crop": false,
+  "bbox_pad": 0.05
+}
