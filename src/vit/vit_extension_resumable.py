@@ -293,15 +293,17 @@ def main():
     parser.add_argument("--no-save-optimizer", action="store_true", help="Do not store optimizer state in checkpoints")
     args = parser.parse_args()
 
+    args_dict = vars(args).copy()
+
+    args_dict.pop("no_resume", None)
+    args_dict.pop("no_save_optimizer", None)
+
     cfg = RunConfig(
-        **vars(args),
+        **args_dict,
         resume=(not args.no_resume),
         save_optimizer=(not args.no_save_optimizer),
         device=("cuda" if torch.cuda.is_available() else "cpu"),
-    )
-    # Remove helper-only argparse fields already converted into RunConfig fields
-    cfg.resume = not args.no_resume
-    cfg.save_optimizer = not args.no_save_optimizer
+)
 
     ensure_dir(cfg.output_dir)
     set_seed(cfg.seed)
