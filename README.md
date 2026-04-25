@@ -50,6 +50,24 @@ CUB_200_2011/
 └── bounding_boxes.txt
 ```
 
+
+## Required format (for deep learning models)
+
+We convert the dataset into ImageFolder format:
+
+```
+data/CUB_200_2011/
+  train/
+    001.Black_footed_Albatross/
+      img1.jpg
+      ...
+  test/
+    001.Black_footed_Albatross/
+      imgA.jpg
+      ...
+```
+
+
 ## Task Definition
 This project studies fine-grained visual recognition using CUB-200-2011.
 
@@ -190,4 +208,60 @@ End-to-end fine-tuning
 ```{bash}
 python -m src.classical_baseline
 python -m src.main
+```
+
+## Advanced Extension
+
+
+### Vision Transformer (ViT-B/16)
+
+We extend the project with a Transformer-based architecture:
+
+- Model: ViT-B/16 (pretrained)
+- Task: 200-class classification
+- Strategy: fine-tuning
+
+### Quick Smoke Test
+
+```{bash}
+python vit_extension.py \
+  --data-root data/CUB_200_2011 \
+  --output-dir results/vit_smoke \
+  --epochs 1 \
+  --batch-size 8 \
+  --subset-train 256 \
+  --subset-val 128
+```
+
+### Full Training
+
+```{bash}
+python vit_extension.py \
+  --data-root data/CUB_200_2011 \
+  --output-dir results/vit_full \
+  --epochs 5 \
+  --batch-size 16 \
+  --lr 3e-4
+```
+
+### Ablation Study (Freeze Backbone)
+
+```{bash}
+python vit_extension.py \
+  --data-root data/CUB_200_2011 \
+  --output-dir results/vit_frozen \
+  --epochs 5 \
+  --batch-size 16 \
+  --freeze-backbone
+```
+
+### Build Comparison Table
+
+```{bash}
+python compare_results.py \
+  --baseline-json results/hog_svm/metrics.json results/resnet18/metrics.json \
+  --baseline-labels "HOG+SVM" "ResNet18 baseline" \
+  --vit-json results/vit_full/metrics.json \
+  --vit-label "ViT-B/16 fine-tune" \
+  --output-csv results/comparison_table.csv
 ```
